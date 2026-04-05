@@ -55,7 +55,7 @@ export default async function handler(req, res) {
   // Check attempt limit
   if (conversationHistory && conversationHistory.length >= MAX_ATTEMPTS) {
     return res.status(200).json({
-      hint: `הסתיימה מכסת ${MAX_ATTEMPTS} ניסיונות. להלן הפתרון המלא:\n\n` + problemData.fullSolution
+      hint: `You have used all ${MAX_ATTEMPTS} attempts. Here is the full solution:\n\n` + problemData.fullSolution
     });
   }
 
@@ -67,13 +67,13 @@ export default async function handler(req, res) {
     let conversationText = '';
     if (conversationHistory && conversationHistory.length > 0) {
       conversationHistory.forEach(turn => {
-        conversationText += `תשובת סטודנט: ${turn.user}\nתגובת מורה: ${turn.ai}\n\n`;
+        conversationText += `Student answer: ${turn.user}\nTeacher response: ${turn.ai}\n\n`;
       });
     }
 
 const prompt = `
 # CRITICAL INSTRUCTIONS
-1. Respond in HEBREW only
+1. ALWAYS respond in ENGLISH. This is the English version of the exercise. Even if the student writes in another language, you MUST respond in English
 2. Be PRACTICAL and SPECIFIC - give concrete mathematical guidance
 3. Keep responses 2-4 sentences
 4. Use gender-neutral language (plural forms)
@@ -142,34 +142,34 @@ ${conversationText ? `## Previous Conversation:\n${conversationText}` : ''}
 # SPECIFIC HINTS BY STEP (give progressively):
 
 ## If Step 1 (eigenvalues):
-- Hint 1: "חשבו את הפולינום האופייני |λI - A| = 0. זוהי מטריצה 3×3."
-- Hint 2: "פתחו את הדטרמיננטה לפי שורה או עמודה. נסו לפי העמודה הראשונה."
-- Hint 3: "הפולינום האופייני הוא (λ-4)²(λ-6)."
-- Hint 4: "λ₁ = 6 (ערך עצמי פשוט), λ₂ = 4 (ערך עצמי כפול)."
+- Hint 1: "Compute the characteristic polynomial |λI - A| = 0. This is a 3×3 matrix."
+- Hint 2: "Expand the determinant along a row or column. Try expanding along the first column."
+- Hint 3: "The characteristic polynomial is (λ-4)²(λ-6)."
+- Hint 4: "λ₁ = 6 (simple eigenvalue), λ₂ = 4 (double eigenvalue)."
 
 ## If Step 2 (eigenvector for λ=6):
-- Hint 1: "הציבו λ = 6 במטריצה (λI - A) ופתרו (6I - A)v = 0."
-- Hint 2: "המטריצה היא [2, 1, 1; -1, 1, -2; 0, -1, 1]. דרגו אותה."
-- Hint 3: "אחרי דירוג: v₃ = t (חופשי), v₂ = t, v₁ = -t."
-- Hint 4: "הוקטור העצמי הוא v₁ = [-1, 1, 1]^T."
+- Hint 1: "Substitute λ = 6 into (λI - A) and solve (6I - A)v = 0."
+- Hint 2: "The matrix is [2, 1, 1; -1, 1, -2; 0, -1, 1]. Row reduce it."
+- Hint 3: "After row reduction: v₃ = t (free), v₂ = t, v₁ = -t."
+- Hint 4: "The eigenvector is v₁ = [-1, 1, 1]^T."
 
 ## If Step 3 (eigenvector for λ=4):
-- Hint 1: "הציבו λ = 4 במטריצה (λI - A) ופתרו (4I - A)v = 0."
-- Hint 2: "המטריצה היא [0, 1, 1; -1, -1, -2; 0, -1, -1]. דרגו אותה."
-- Hint 3: "שימו לב שהריבוי הגאומטרי הוא 1 - יש רק וקטור עצמי אחד!"
-- Hint 4: "הוקטור העצמי הוא v₂ = [1, 1, -1]^T."
+- Hint 1: "Substitute λ = 4 into (λI - A) and solve (4I - A)v = 0."
+- Hint 2: "The matrix is [0, 1, 1; -1, -1, -2; 0, -1, -1]. Row reduce it."
+- Hint 3: "Note that the geometric multiplicity is 1 - there is only one eigenvector!"
+- Hint 4: "The eigenvector is v₂ = [1, 1, -1]^T."
 
 ## If Step 4 (generalized eigenvector):
-- Hint 1: "מכיוון שלערך העצמי הכפול λ=4 יש רק וקטור עצמי אחד, צריך וקטור מוכלל w."
-- Hint 2: "פתרו את המערכת (A - 4I)w = v₂, כלומר [0,-1,-1; 1,1,2; 0,1,1]w = [1,1,-1]^T."
-- Hint 3: "w₁ הוא פרמטר חופשי. בחרו w₁ = 0 ומצאו w₂ ו-w₃."
-- Hint 4: "w₂ = -3, w₃ = 2. הוקטור המוכלל הוא w = [0, -3, 2]^T."
+- Hint 1: "Since the double eigenvalue λ=4 has only one eigenvector, we need a generalized eigenvector w."
+- Hint 2: "Solve the system (A - 4I)w = v₂, i.e. [0,-1,-1; 1,1,2; 0,1,1]w = [1,1,-1]^T."
+- Hint 3: "w₁ is a free parameter. Choose w₁ = 0 and find w₂ and w₃."
+- Hint 4: "w₂ = -3, w₃ = 2. The generalized eigenvector is w = [0, -3, 2]^T."
 
 ## If Step 5 (particular solution):
-- Hint 1: "מכיוון ש-3 אינו ערך עצמי, ננסה פתרון פרטי x_p = e^{3t}[a₁, a₂, a₃]^T."
-- Hint 2: "הציבו במערכת וצמצמו את e^{3t}. תקבלו (3I - A)a = [1, 1, 0]^T."
-- Hint 3: "המטריצה (3I - A) = [-1, 1, 1; -1, -2, -2; 0, -1, -2]. פתרו את המערכת."
-- Hint 4: "a₁ = -1, a₂ = 0, a₃ = 0. הפתרון הפרטי הוא x_p = e^{3t}[-1, 0, 0]^T."
+- Hint 1: "Since 3 is not an eigenvalue, try a particular solution x_p = e^{3t}[a₁, a₂, a₃]^T."
+- Hint 2: "Substitute into the system and cancel e^{3t}. You get (3I - A)a = [1, 1, 0]^T."
+- Hint 3: "The matrix (3I - A) = [-1, 1, 1; -1, -2, -2; 0, -1, -2]. Solve the system."
+- Hint 4: "a₁ = -1, a₂ = 0, a₃ = 0. The particular solution is x_p = e^{3t}[-1, 0, 0]^T."
 
 # COMMON ERRORS TO CHECK:
 - Wrong determinant calculation for 3×3 matrix
@@ -180,7 +180,7 @@ ${conversationText ? `## Previous Conversation:\n${conversationText}` : ''}
 - Sign errors in the particular solution system
 
 # YOUR RESPONSE:
-1. If CORRECT: "נכון! [brief confirmation]" and encourage next step
+1. If CORRECT: "Correct! [brief confirmation]" and encourage next step
 2. If INCORRECT: Identify the specific error and give the appropriate hint from above
 3. If student asks for help/hint: Give the next hint in progression
 4. After 3+ attempts: Give more explicit guidance, show intermediate steps
@@ -201,7 +201,7 @@ ${conversationText ? `## Previous Conversation:\n${conversationText}` : ''}
     console.error('AI API Error:', error);
     const aiProvider = process.env.AI_PROVIDER || 'google';
     return res.status(500).json({
-      error: 'שגיאה בעיבוד הבקשה. נסו שוב.',
+      error: 'Error processing the request. Please try again.',
       provider: aiProvider,
       details: error.message
     });
