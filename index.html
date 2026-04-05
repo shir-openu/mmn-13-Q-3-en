@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פתרון מערכת משוואות דיפרנציאליות - מערכת 3×3 אי-הומוגנית</title>
+    <title>Solving a System of Differential Equations - 3×3 Non-Homogeneous System</title>
     <style>
         :root {
             --bg: #0b1220;
@@ -364,12 +364,12 @@
 
         .ai-message.user {
             background: rgba(102, 126, 234, 0.2);
-            border-right: 3px solid #667eea;
+            border-left: 3px solid #667eea;
         }
 
         .ai-message.assistant {
             background: rgba(34, 197, 94, 0.1);
-            border-right: 3px solid var(--green);
+            border-left: 3px solid var(--green);
         }
 
         .ai-loading {
@@ -415,7 +415,7 @@
             font-weight: 400;
             margin-bottom: 10px;
             text-align: center;
-            direction: rtl;
+            direction: ltr;
         }
 
         .solution-step {
@@ -429,8 +429,8 @@
             color: var(--purple);
             font-size: 1rem;
             margin-bottom: 5px;
-            direction: rtl;
-            text-align: right;
+            direction: ltr;
+            text-align: left;
         }
 
         .solution-step .math {
@@ -646,7 +646,7 @@
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            direction: rtl;
+            direction: ltr;
         }
         .popup h2 {
             margin: 0 0 16px 0;
@@ -658,7 +658,7 @@
         .popup-close {
             position: absolute;
             top: 12px;
-            left: 12px;
+            right: 12px;
             background: none;
             border: none;
             color: var(--ink);
@@ -673,15 +673,15 @@
     </style>
 </head>
 <body>
-    <h1>פתרון מערכת משוואות דיפרנציאליות</h1>
-    <div class="subtitle">מערכת 3×3 אי-הומוגנית עם ערך עצמי כפול</div>
+    <h1>Solving a System of Differential Equations</h1>
+    <div class="subtitle">3×3 Non-Homogeneous System with a Double Eigenvalue</div>
 
     <!-- Problem Statement -->
     <div class="problem-statement">
-        <h2>השאלה</h2>
+        <h2>The Problem</h2>
         <div class="problem-math">
             <div class="equation-system">
-                <div>מצאו את הפתרון הכללי של המערכת:</div>
+                <div>Find the general solution of the system:</div>
                 <div style="margin-top: 10px; line-height: 2.2;">
                     dx/dt = 4x − y − z + e<sup>3t</sup><br>
                     dy/dt = x + 5y + 2z + e<sup>3t</sup><br>
@@ -715,10 +715,10 @@
 
     <!-- Method explanation -->
     <div class="method-box">
-        <h3>שיטת הפתרון</h3>
+        <h3>Solution Method</h3>
         <p>
-            מערכת אי-הומוגנית x' = Ax + b. נמצא את הפתרון ההומוגני (3 פתרונות בלתי תלויים)
-            ואת הפתרון הפרטי. λ=4 הוא ערך עצמי כפול ודורש וקטור מוכלל.
+            Non-homogeneous system x' = Ax + b. We find the homogeneous solution (3 linearly independent solutions)
+            and the particular solution. λ=4 is a double eigenvalue and requires a generalized eigenvector.
         </p>
     </div>
 
@@ -738,29 +738,29 @@
     <div class="container">
         <!-- Step 1: Find Eigenvalues -->
         <div class="phase step1 active" id="phase1">
-            <div class="phase-title">שלב 1: מציאת ערכים עצמיים</div>
+            <div class="phase-title">Step 1: Finding Eigenvalues</div>
 
             <div class="phase-description">
-                מצאו את הערכים העצמיים של המטריצה A על ידי פתרון |λI − A| = 0
+                Find the eigenvalues of matrix A by solving |λI − A| = 0
             </div>
 
             <div class="guiding-question">
-                <h3>שאלה מנחה</h3>
-                <p>חשבו את הפולינום האופייני |λI − A| ומצאו את שורשיו</p>
+                <h3>Guiding Question</h3>
+                <p>Compute the characteristic polynomial |λI − A| and find its roots</p>
                 <div class="math">
                     <span class="eq-highlight">|λI − A| = (λ−4)²(λ−6)</span>
                 </div>
-                <p style="margin-top: 10px; font-size: 1rem;">רמז: ישנם שני ערכים עצמיים שונים, אחד מהם כפול</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Hint: There are two distinct eigenvalues, one of which is double</p>
             </div>
 
             <div class="input-section">
-                <label>מהם הערכים העצמיים?</label>
+                <label>What are the eigenvalues?</label>
                 <div class="input-row">
-                    <span>ערך עצמי פשוט: λ₁ =</span>
+                    <span>Simple eigenvalue: λ₁ =</span>
                     <input type="text" id="lambda1" placeholder="?">
                 </div>
                 <div class="input-row">
-                    <span>ערך עצמי כפול: λ₂ =</span>
+                    <span>Double eigenvalue: λ₂ =</span>
                     <input type="text" id="lambda2" placeholder="?">
                 </div>
             </div>
@@ -768,8 +768,8 @@
             <div class="feedback" id="feedback1"></div>
 
             <div class="controls">
-                <button class="control-btn primary" id="check1">בדקו תשובה</button>
-                <button class="control-btn show-solution" id="show1">הציגו פתרון</button>
+                <button class="control-btn primary" id="check1">Check Answer</button>
+                <button class="control-btn show-solution" id="show1">Show Solution</button>
                 <button class="df-btn" id="df1">
                     <span class="df-icon">🧐</span>
                     <span>Digital Friend</span>
@@ -781,52 +781,52 @@
                 <div class="ai-chat-header">
                     <span class="ai-chat-title">
                         <span>🧐</span>
-                        <span>Digital Friend - שלב 1</span>
+                        <span>Digital Friend - Step 1</span>
                     </span>
-                    <button class="ai-close-btn" onclick="closeAIChat(1)">סגירה ×</button>
+                    <button class="ai-close-btn" onclick="closeAIChat(1)">Close ×</button>
                 </div>
                 <div class="ai-messages" id="aiMessages1"></div>
             </div>
 
             <div class="solution-box" id="solution1">
-                <h4>פתרון שלב 1</h4>
+                <h4>Step 1 Solution</h4>
                 <div class="solution-step">
-                    <div class="label">הפולינום האופייני:</div>
+                    <div class="label">Characteristic polynomial:</div>
                     <div class="math">|λI − A| = (λ−4)²(λ−6)</div>
                 </div>
                 <div class="result-highlight">
-                    <h4>הערכים העצמיים</h4>
+                    <h4>The Eigenvalues</h4>
                     <div class="math">
-                        <span class="hl-purple">λ₁ = 6 (פשוט), λ₂ = 4 (כפול)</span>
+                        <span class="hl-purple">λ₁ = 6 (simple), λ₂ = 4 (double)</span>
                     </div>
                 </div>
             </div>
 
             <!-- Inline navigation -->
             <div class="inline-nav" style="text-align: center; margin-top: 20px;">
-                <button class="nav-btn" onclick="showStep(2)">← שלב הבא</button>
+                <button class="nav-btn" onclick="showStep(2)">Next Step →</button>
             </div>
         </div>
 
         <!-- Step 2: Eigenvector for λ=6 -->
         <div class="phase step2" id="phase2">
-            <div class="phase-title">שלב 2: וקטור עצמי עבור λ=6</div>
+            <div class="phase-title">Step 2: Eigenvector for λ=6</div>
 
             <div class="phase-description">
-                מצאו וקטור עצמי v₁ עבור הערך העצמי הפשוט λ = 6
+                Find an eigenvector v₁ for the simple eigenvalue λ = 6
             </div>
 
             <div class="guiding-question">
-                <h3>שאלה מנחה</h3>
-                <p>פתרו את המערכת (6I − A)v = 0</p>
+                <h3>Guiding Question</h3>
+                <p>Solve the system (6I − A)v = 0</p>
                 <div class="math">
                     <span class="eq-highlight">(6I − A) = [2, 1, 1; −1, 1, −2; 0, −1, 1]</span>
                 </div>
-                <p style="margin-top: 10px; font-size: 1rem;">רמז: דרגו את המטריצה ומצאו וקטור עצמי</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Hint: Row reduce the matrix and find an eigenvector</p>
             </div>
 
             <div class="input-section">
-                <label>מהו הוקטור העצמי v₁ עבור λ = 6?</label>
+                <label>What is the eigenvector v₁ for λ = 6?</label>
                 <div class="input-row">
                     <span>v₁ = [</span>
                     <input type="text" id="v1-1" placeholder="?">
@@ -836,14 +836,14 @@
                     <input type="text" id="v1-3" placeholder="?">
                     <span>]<sup>T</sup></span>
                 </div>
-                <p style="font-size: 1rem; opacity: 0.7; margin-top: 5px;">הזינו מספרים שלמים (כל כפולה סקלרית מתקבלת)</p>
+                <p style="font-size: 1rem; opacity: 0.7; margin-top: 5px;">Enter integers (any scalar multiple is accepted)</p>
             </div>
 
             <div class="feedback" id="feedback2"></div>
 
             <div class="controls">
-                <button class="control-btn primary" id="check2">בדקו תשובה</button>
-                <button class="control-btn show-solution" id="show2">הציגו פתרון</button>
+                <button class="control-btn primary" id="check2">Check Answer</button>
+                <button class="control-btn show-solution" id="show2">Show Solution</button>
                 <button class="df-btn" id="df2">
                     <span class="df-icon">🧐</span>
                     <span>Digital Friend</span>
@@ -855,25 +855,25 @@
                 <div class="ai-chat-header">
                     <span class="ai-chat-title">
                         <span>🧐</span>
-                        <span>Digital Friend - שלב 2</span>
+                        <span>Digital Friend - Step 2</span>
                     </span>
-                    <button class="ai-close-btn" onclick="closeAIChat(2)">סגירה ×</button>
+                    <button class="ai-close-btn" onclick="closeAIChat(2)">Close ×</button>
                 </div>
                 <div class="ai-messages" id="aiMessages2"></div>
             </div>
 
             <div class="solution-box" id="solution2">
-                <h4>פתרון שלב 2</h4>
+                <h4>Step 2 Solution</h4>
                 <div class="solution-step">
-                    <div class="label">המטריצה (6I − A):</div>
+                    <div class="label">The matrix (6I − A):</div>
                     <div class="math">[2, 1, 1; −1, 1, −2; 0, −1, 1]</div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">דירוג ופתרון:</div>
+                    <div class="label">Row reduction and solution:</div>
                     <div class="math">v₁ = [−1, 1, 1]<sup>T</sup></div>
                 </div>
                 <div class="result-highlight">
-                    <h4>הוקטור העצמי</h4>
+                    <h4>The Eigenvector</h4>
                     <div class="math">
                         <span class="hl-orange">v₁ = [−1, 1, 1]<sup>T</sup></span>
                     </div>
@@ -882,30 +882,30 @@
 
             <!-- Inline navigation -->
             <div class="inline-nav" style="text-align: center; margin-top: 20px;">
-                <button class="nav-btn" onclick="showStep(1)" style="margin-left: 10px;">שלב קודם →</button>
-                <button class="nav-btn" onclick="showStep(3)">← שלב הבא</button>
+                <button class="nav-btn" onclick="showStep(1)" style="margin-right: 10px;">← Previous Step</button>
+                <button class="nav-btn" onclick="showStep(3)">Next Step →</button>
             </div>
         </div>
 
         <!-- Step 3: Eigenvector for λ=4 -->
         <div class="phase step3" id="phase3">
-            <div class="phase-title">שלב 3: וקטור עצמי עבור λ=4</div>
+            <div class="phase-title">Step 3: Eigenvector for λ=4</div>
 
             <div class="phase-description">
-                מצאו וקטור עצמי v₂ עבור הערך העצמי הכפול λ = 4
+                Find an eigenvector v₂ for the double eigenvalue λ = 4
             </div>
 
             <div class="guiding-question">
-                <h3>שאלה מנחה</h3>
-                <p>פתרו את המערכת (4I − A)v = 0</p>
+                <h3>Guiding Question</h3>
+                <p>Solve the system (4I − A)v = 0</p>
                 <div class="math">
                     <span class="eq-highlight">(4I − A) = [0, 1, 1; −1, −1, −2; 0, −1, −1]</span>
                 </div>
-                <p style="margin-top: 10px; font-size: 1rem;">רמז: לערך עצמי כפול יש וקטור עצמי אחד בלבד (ריבוי גאומטרי 1)</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Hint: The double eigenvalue has only one eigenvector (geometric multiplicity 1)</p>
             </div>
 
             <div class="input-section">
-                <label>מהו הוקטור העצמי v₂ עבור λ = 4?</label>
+                <label>What is the eigenvector v₂ for λ = 4?</label>
                 <div class="input-row">
                     <span>v₂ = [</span>
                     <input type="text" id="v2-1" placeholder="?">
@@ -915,14 +915,14 @@
                     <input type="text" id="v2-3" placeholder="?">
                     <span>]<sup>T</sup></span>
                 </div>
-                <p style="font-size: 1rem; opacity: 0.7; margin-top: 5px;">הזינו מספרים שלמים (כל כפולה סקלרית מתקבלת)</p>
+                <p style="font-size: 1rem; opacity: 0.7; margin-top: 5px;">Enter integers (any scalar multiple is accepted)</p>
             </div>
 
             <div class="feedback" id="feedback3"></div>
 
             <div class="controls">
-                <button class="control-btn primary" id="check3">בדקו תשובה</button>
-                <button class="control-btn show-solution" id="show3">הציגו פתרון</button>
+                <button class="control-btn primary" id="check3">Check Answer</button>
+                <button class="control-btn show-solution" id="show3">Show Solution</button>
                 <button class="df-btn" id="df3">
                     <span class="df-icon">🧐</span>
                     <span>Digital Friend</span>
@@ -934,25 +934,25 @@
                 <div class="ai-chat-header">
                     <span class="ai-chat-title">
                         <span>🧐</span>
-                        <span>Digital Friend - שלב 3</span>
+                        <span>Digital Friend - Step 3</span>
                     </span>
-                    <button class="ai-close-btn" onclick="closeAIChat(3)">סגירה ×</button>
+                    <button class="ai-close-btn" onclick="closeAIChat(3)">Close ×</button>
                 </div>
                 <div class="ai-messages" id="aiMessages3"></div>
             </div>
 
             <div class="solution-box" id="solution3">
-                <h4>פתרון שלב 3</h4>
+                <h4>Step 3 Solution</h4>
                 <div class="solution-step">
-                    <div class="label">המטריצה (4I − A):</div>
+                    <div class="label">The matrix (4I − A):</div>
                     <div class="math">[0, 1, 1; −1, −1, −2; 0, −1, −1]</div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">דירוג ופתרון:</div>
+                    <div class="label">Row reduction and solution:</div>
                     <div class="math">v₂ = [1, 1, −1]<sup>T</sup></div>
                 </div>
                 <div class="result-highlight">
-                    <h4>הוקטור העצמי</h4>
+                    <h4>The Eigenvector</h4>
                     <div class="math">
                         <span class="hl-green">v₂ = [1, 1, −1]<sup>T</sup></span>
                     </div>
@@ -961,31 +961,31 @@
 
             <!-- Inline navigation -->
             <div class="inline-nav" style="text-align: center; margin-top: 20px;">
-                <button class="nav-btn" onclick="showStep(2)" style="margin-left: 10px;">שלב קודם →</button>
-                <button class="nav-btn" onclick="showStep(4)">← שלב הבא</button>
+                <button class="nav-btn" onclick="showStep(2)" style="margin-right: 10px;">← Previous Step</button>
+                <button class="nav-btn" onclick="showStep(4)">Next Step →</button>
             </div>
         </div>
 
         <!-- Step 4: Generalized Eigenvector -->
         <div class="phase step4" id="phase4">
-            <div class="phase-title">שלב 4: וקטור מוכלל (פתרון שלישי)</div>
+            <div class="phase-title">Step 4: Generalized Eigenvector (Third Solution)</div>
 
             <div class="phase-description">
-                מכיוון ש-λ=4 הוא ערך עצמי כפול עם וקטור עצמי אחד, צריך וקטור מוכלל w.<br>
-                הפתרון השלישי: x₃(t) = te<sup>4t</sup>v₂ + e<sup>4t</sup>w
+                Since λ=4 is a double eigenvalue with only one eigenvector, we need a generalized eigenvector w.<br>
+                The third solution: x₃(t) = te<sup>4t</sup>v₂ + e<sup>4t</sup>w
             </div>
 
             <div class="guiding-question">
-                <h3>שאלה מנחה</h3>
-                <p>פתרו את המערכת (A − 4I)w = v₂ כדי למצוא את w</p>
+                <h3>Guiding Question</h3>
+                <p>Solve the system (A − 4I)w = v₂ to find w</p>
                 <div class="math">
                     <span class="eq-highlight">(A − 4I)w = v₂ = [1, 1, −1]<sup>T</sup></span>
                 </div>
-                <p style="margin-top: 10px; font-size: 1rem;">רמז: w₁ הוא פרמטר חופשי (בחרו w₁ = 0). מצאו את w₂ ו-w₃</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Hint: w₁ is a free parameter (choose w₁ = 0). Find w₂ and w₃</p>
             </div>
 
             <div class="input-section">
-                <label>מהם רכיבי הוקטור המוכלל w? (עם בחירת w₁ = 0)</label>
+                <label>What are the components of the generalized eigenvector w? (with w₁ = 0)</label>
                 <div class="input-row">
                     <span>w₂ =</span>
                     <input type="text" id="w2-val" placeholder="?">
@@ -997,8 +997,8 @@
             <div class="feedback" id="feedback4"></div>
 
             <div class="controls">
-                <button class="control-btn primary" id="check4">בדקו תשובה</button>
-                <button class="control-btn show-solution" id="show4">הציגו פתרון</button>
+                <button class="control-btn primary" id="check4">Check Answer</button>
+                <button class="control-btn show-solution" id="show4">Show Solution</button>
                 <button class="df-btn" id="df4">
                     <span class="df-icon">🧐</span>
                     <span>Digital Friend</span>
@@ -1010,29 +1010,29 @@
                 <div class="ai-chat-header">
                     <span class="ai-chat-title">
                         <span>🧐</span>
-                        <span>Digital Friend - שלב 4</span>
+                        <span>Digital Friend - Step 4</span>
                     </span>
-                    <button class="ai-close-btn" onclick="closeAIChat(4)">סגירה ×</button>
+                    <button class="ai-close-btn" onclick="closeAIChat(4)">Close ×</button>
                 </div>
                 <div class="ai-messages" id="aiMessages4"></div>
             </div>
 
             <div class="solution-box" id="solution4">
-                <h4>פתרון שלב 4</h4>
+                <h4>Step 4 Solution</h4>
                 <div class="solution-step">
-                    <div class="label">המשוואה (A − 4I)w = v₂:</div>
+                    <div class="label">The equation (A − 4I)w = v₂:</div>
                     <div class="math">[0, −1, −1; 1, 1, 2; 0, 1, 1] · w = [1, 1, −1]<sup>T</sup></div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">פתרון המערכת:</div>
-                    <div class="math">w₁ = t (חופשי), w₂ = −3, w₃ = 2<br>בחירת w₁ = 0: w = [0, −3, 2]<sup>T</sup></div>
+                    <div class="label">Solving the system:</div>
+                    <div class="math">w₁ = t (free), w₂ = −3, w₃ = 2<br>Choosing w₁ = 0: w = [0, −3, 2]<sup>T</sup></div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">הפתרון השלישי:</div>
+                    <div class="label">The third solution:</div>
                     <div class="math">x₃(t) = te<sup>4t</sup>[1,1,−1]<sup>T</sup> + e<sup>4t</sup>[0,−3,2]<sup>T</sup> = e<sup>4t</sup>[t, t−3, 2−t]<sup>T</sup></div>
                 </div>
                 <div class="result-highlight">
-                    <h4>הוקטור המוכלל והפתרון השלישי</h4>
+                    <h4>The Generalized Eigenvector and Third Solution</h4>
                     <div class="math">
                         <span class="hl-blue">w = [0, −3, 2]<sup>T</sup></span><br>
                         <span class="hl-blue">x₃(t) = e<sup>4t</sup>[t, t−3, 2−t]<sup>T</sup></span>
@@ -1042,30 +1042,30 @@
 
             <!-- Inline navigation -->
             <div class="inline-nav" style="text-align: center; margin-top: 20px;">
-                <button class="nav-btn" onclick="showStep(3)" style="margin-left: 10px;">שלב קודם →</button>
-                <button class="nav-btn" onclick="showStep(5)">← שלב הבא</button>
+                <button class="nav-btn" onclick="showStep(3)" style="margin-right: 10px;">← Previous Step</button>
+                <button class="nav-btn" onclick="showStep(5)">Next Step →</button>
             </div>
         </div>
 
         <!-- Step 5: Particular Solution -->
         <div class="phase step5" id="phase5">
-            <div class="phase-title">שלב 5: פתרון פרטי</div>
+            <div class="phase-title">Step 5: Particular Solution</div>
 
             <div class="phase-description">
-                מכיוון ש-3 אינו ערך עצמי, ננסה פתרון פרטי מהצורה x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup>
+                Since 3 is not an eigenvalue, we try a particular solution of the form x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup>
             </div>
 
             <div class="guiding-question">
-                <h3>שאלה מנחה</h3>
-                <p>הציבו x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup> במערכת ופתרו עבור a₁, a₂, a₃</p>
+                <h3>Guiding Question</h3>
+                <p>Substitute x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup> into the system and solve for a₁, a₂, a₃</p>
                 <div class="math">
                     <span class="eq-highlight">(3I − A)[a₁, a₂, a₃]<sup>T</sup> = [1, 1, 0]<sup>T</sup></span>
                 </div>
-                <p style="margin-top: 10px; font-size: 1rem;">רמז: פתרו מערכת של 3 משוואות ב-3 נעלמים</p>
+                <p style="margin-top: 10px; font-size: 1rem;">Hint: Solve a system of 3 equations in 3 unknowns</p>
             </div>
 
             <div class="input-section">
-                <label>מהם ערכי המקדמים?</label>
+                <label>What are the values of the coefficients?</label>
                 <div class="input-row">
                     <span>a₁ =</span>
                     <input type="text" id="a1-val" placeholder="?">
@@ -1079,8 +1079,8 @@
             <div class="feedback" id="feedback5"></div>
 
             <div class="controls">
-                <button class="control-btn primary" id="check5">בדקו תשובה</button>
-                <button class="control-btn show-solution" id="show5">הציגו פתרון</button>
+                <button class="control-btn primary" id="check5">Check Answer</button>
+                <button class="control-btn show-solution" id="show5">Show Solution</button>
                 <button class="df-btn" id="df5">
                     <span class="df-icon">🧐</span>
                     <span>Digital Friend</span>
@@ -1092,29 +1092,29 @@
                 <div class="ai-chat-header">
                     <span class="ai-chat-title">
                         <span>🧐</span>
-                        <span>Digital Friend - שלב 5</span>
+                        <span>Digital Friend - Step 5</span>
                     </span>
-                    <button class="ai-close-btn" onclick="closeAIChat(5)">סגירה ×</button>
+                    <button class="ai-close-btn" onclick="closeAIChat(5)">Close ×</button>
                 </div>
                 <div class="ai-messages" id="aiMessages5"></div>
             </div>
 
             <div class="solution-box" id="solution5">
-                <h4>פתרון שלב 5</h4>
+                <h4>Step 5 Solution</h4>
                 <div class="solution-step">
-                    <div class="label">הצבת x<sub>p</sub> במערכת:</div>
+                    <div class="label">Substituting x<sub>p</sub> into the system:</div>
                     <div class="math">3e<sup>3t</sup>[a₁,a₂,a₃]<sup>T</sup> = Ae<sup>3t</sup>[a₁,a₂,a₃]<sup>T</sup> + e<sup>3t</sup>[1,1,0]<sup>T</sup></div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">פישוט:</div>
+                    <div class="label">Simplification:</div>
                     <div class="math">(3I − A)[a₁,a₂,a₃]<sup>T</sup> = [1,1,0]<sup>T</sup></div>
                 </div>
                 <div class="solution-step">
-                    <div class="label">פתרון:</div>
+                    <div class="label">Solution:</div>
                     <div class="math">a₁ = −1, a₂ = 0, a₃ = 0</div>
                 </div>
                 <div class="result-highlight">
-                    <h4>הפתרון הפרטי</h4>
+                    <h4>The Particular Solution</h4>
                     <div class="math">
                         <span class="hl-teal">x<sub>p</sub>(t) = e<sup>3t</sup>[−1, 0, 0]<sup>T</sup></span>
                     </div>
@@ -1123,7 +1123,7 @@
 
             <!-- Final Answer -->
             <div class="solution-box" id="final-answer" style="display: none;">
-                <h4>הפתרון הכללי</h4>
+                <h4>The General Solution</h4>
                 <div class="result-highlight" style="background: rgba(17, 168, 160, 0.15); border-color: var(--teal);">
                     <div class="math" style="font-size: 1.05rem; line-height: 2;">
                         x(t) = −C₁e<sup>6t</sup> + C₂e<sup>4t</sup> + C₃te<sup>4t</sup> − e<sup>3t</sup><br>
@@ -1135,7 +1135,7 @@
 
             <!-- Inline navigation -->
             <div class="inline-nav" style="text-align: center; margin-top: 20px;">
-                <button class="nav-btn" onclick="showStep(4)">שלב קודם →</button>
+                <button class="nav-btn" onclick="showStep(4)">← Previous Step</button>
             </div>
         </div>
     </div>
@@ -1144,17 +1144,17 @@
     <div class="popup-overlay" id="popup1Overlay">
         <div class="popup">
             <button class="popup-close" id="popup1Close">&times;</button>
-            <h2>פתרון שלב 1 - מציאת ערכים עצמיים</h2>
+            <h2>Step 1 Solution - Finding Eigenvalues</h2>
 
             <div class="solution-step">
-                <div class="label">הפולינום האופייני |λI − A|:</div>
+                <div class="label">The characteristic polynomial |λI − A|:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     |λI − A| = det[λ−4, 1, 1; −1, λ−5, −2; 0, −1, λ−5]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">פיתוח הדטרמיננטה:</div>
+                <div class="label">Expanding the determinant:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
                     = (λ−4)[(λ−5)(λ−5) − (−2)(−1)] − 1[(−1)(λ−5) − (−2)(0)] + 1[(−1)(−1) − (λ−5)(0)]<br>
                     = (λ−4)(λ²−10λ+25−2) − 1(−λ+5) + 1(1)<br>
@@ -1166,9 +1166,9 @@
             </div>
 
             <div class="result-highlight">
-                <h4>הערכים העצמיים</h4>
+                <h4>The Eigenvalues</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.15rem;">
-                    <span class="hl-purple">λ₁ = 6 (פשוט), λ₂ = 4 (כפול, ריבוי אלגברי 2)</span>
+                    <span class="hl-purple">λ₁ = 6 (simple), λ₂ = 4 (double, algebraic multiplicity 2)</span>
                 </div>
             </div>
         </div>
@@ -1178,17 +1178,17 @@
     <div class="popup-overlay" id="popup2Overlay">
         <div class="popup" style="border-color: var(--orange);">
             <button class="popup-close" id="popup2Close">&times;</button>
-            <h2 style="color: var(--orange);">פתרון שלב 2 - וקטור עצמי עבור λ=6</h2>
+            <h2 style="color: var(--orange);">Step 2 Solution - Eigenvector for λ=6</h2>
 
             <div class="solution-step">
-                <div class="label">המטריצה (6I − A):</div>
+                <div class="label">The matrix (6I − A):</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     6I − A = [2, 1, 1; −1, 1, −2; 0, −1, 1]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">דירוג שורות:</div>
+                <div class="label">Row reduction:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
                     R₂ → R₂ + ½R₁: [2, 1, 1; 0, 3/2, −3/2; 0, −1, 1]<br>
                     R₃ → R₃ + ⅔R₂: [2, 1, 1; 0, 3/2, −3/2; 0, 0, 0]
@@ -1196,15 +1196,15 @@
             </div>
 
             <div class="solution-step">
-                <div class="label">פתרון:</div>
+                <div class="label">Solution:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
-                    v₃ = t (חופשי), v₂ = t, v₁ = −t<br>
-                    בחירת t = 1: v₁ = [−1, 1, 1]<sup>T</sup>
+                    v₃ = t (free), v₂ = t, v₁ = −t<br>
+                    Choosing t = 1: v₁ = [−1, 1, 1]<sup>T</sup>
                 </div>
             </div>
 
             <div class="result-highlight">
-                <h4>הוקטור העצמי</h4>
+                <h4>The Eigenvector</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.15rem;">
                     <span class="hl-orange">v₁ = [−1, 1, 1]<sup>T</sup></span>
                 </div>
@@ -1216,17 +1216,17 @@
     <div class="popup-overlay" id="popup3Overlay">
         <div class="popup" style="border-color: var(--green);">
             <button class="popup-close" id="popup3Close">&times;</button>
-            <h2 style="color: var(--green);">פתרון שלב 3 - וקטור עצמי עבור λ=4</h2>
+            <h2 style="color: var(--green);">Step 3 Solution - Eigenvector for λ=4</h2>
 
             <div class="solution-step">
-                <div class="label">המטריצה (4I − A):</div>
+                <div class="label">The matrix (4I − A):</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     4I − A = [0, 1, 1; −1, −1, −2; 0, −1, −1]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">דירוג שורות:</div>
+                <div class="label">Row reduction:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
                     R₃ → R₃ + R₁: [0, 1, 1; −1, −1, −2; 0, 0, 0]<br>
                     R₂ → R₂ + R₁ (swap): [−1, −1, −2; 0, 1, 1; 0, 0, 0]
@@ -1234,23 +1234,23 @@
             </div>
 
             <div class="solution-step">
-                <div class="label">פתרון:</div>
+                <div class="label">Solution:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
-                    v₃ = t (חופשי), v₂ = −t, v₁ = t<br>
-                    בחירת t = −1: v₂ = [1, 1, −1]<sup>T</sup>
+                    v₃ = t (free), v₂ = −t, v₁ = t<br>
+                    Choosing t = −1: v₂ = [1, 1, −1]<sup>T</sup>
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">הערה חשובה:</div>
-                <div class="math" style="direction: rtl; text-align: center; font-size: 1rem;">
-                    הריבוי הגאומטרי הוא 1 (וקטור עצמי אחד בלבד), בעוד הריבוי האלגברי הוא 2.<br>
-                    לכן נצטרך וקטור מוכלל בשלב הבא.
+                <div class="label">Important note:</div>
+                <div class="math" style="direction: ltr; text-align: center; font-size: 1rem;">
+                    The geometric multiplicity is 1 (only one eigenvector), while the algebraic multiplicity is 2.<br>
+                    Therefore, we will need a generalized eigenvector in the next step.
                 </div>
             </div>
 
             <div class="result-highlight">
-                <h4>הוקטור העצמי</h4>
+                <h4>The Eigenvector</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.15rem;">
                     <span class="hl-green">v₂ = [1, 1, −1]<sup>T</sup></span>
                 </div>
@@ -1262,46 +1262,46 @@
     <div class="popup-overlay" id="popup4Overlay">
         <div class="popup" style="border-color: var(--blue); max-width: 750px;">
             <button class="popup-close" id="popup4Close">&times;</button>
-            <h2 style="color: var(--blue);">פתרון שלב 4 - וקטור מוכלל ופתרון שלישי (פירוט מלא)</h2>
+            <h2 style="color: var(--blue);">Step 4 Solution - Generalized Eigenvector and Third Solution (Full Detail)</h2>
 
             <div class="solution-step">
-                <div class="label">שלב א': למה צריך וקטור מוכלל?</div>
-                <div class="math" style="direction: rtl; text-align: center; font-size: 1rem; line-height: 1.8;">
-                    λ=4 הוא ערך עצמי כפול (ריבוי אלגברי 2) אבל יש לו רק וקטור עצמי אחד (ריבוי גאומטרי 1).<br>
-                    לכן הפתרון השלישי אינו מהצורה הרגילה e<sup>λt</sup>v, אלא דורש וקטור מוכלל.
+                <div class="label">Part A: Why do we need a generalized eigenvector?</div>
+                <div class="math" style="direction: ltr; text-align: center; font-size: 1rem; line-height: 1.8;">
+                    λ=4 is a double eigenvalue (algebraic multiplicity 2) but has only one eigenvector (geometric multiplicity 1).<br>
+                    Therefore, the third solution is not of the standard form e<sup>λt</sup>v, and requires a generalized eigenvector.
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">שלב ב': צורת הפתרון השלישי</div>
+                <div class="label">Part B: Form of the third solution</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     x₃(t) = te<sup>4t</sup>v₂ + e<sup>4t</sup>w
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">שלב ג': מציאת w - פתרון (A − 4I)w = v₂</div>
+                <div class="label">Part C: Finding w - Solving (A − 4I)w = v₂</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1rem; line-height: 1.8;">
                     [0, −1, −1; 1, 1, 2; 0, 1, 1] · [w₁; w₂; w₃] = [1; 1; −1]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">שלב ד': פתרון המערכת</div>
+                <div class="label">Part D: Solving the system</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1rem; line-height: 1.8;">
-                    משוואה 1: −w₂ − w₃ = 1<br>
-                    משוואה 3: w₂ + w₃ = −1 (זהה למשוואה 1)<br>
-                    משוואה 2: w₁ + w₂ + 2w₃ = 1<br><br>
-                    ממשוואה 1: w₂ = −1 − w₃<br>
-                    הצבה במשוואה 2: w₁ + (−1 − w₃) + 2w₃ = 1<br>
+                    Equation 1: −w₂ − w₃ = 1<br>
+                    Equation 3: w₂ + w₃ = −1 (identical to Equation 1)<br>
+                    Equation 2: w₁ + w₂ + 2w₃ = 1<br><br>
+                    From Equation 1: w₂ = −1 − w₃<br>
+                    Substituting into Equation 2: w₁ + (−1 − w₃) + 2w₃ = 1<br>
                     w₁ + w₃ = 2 → w₃ = 2 − w₁<br>
                     w₂ = −1 − (2 − w₁) = w₁ − 3<br><br>
-                    בחירת w₁ = 0: <strong>w₂ = −3, w₃ = 2</strong>
+                    Choosing w₁ = 0: <strong>w₂ = −3, w₃ = 2</strong>
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">שלב ה': הפתרון השלישי</div>
+                <div class="label">Part E: The third solution</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
                     x₃(t) = te<sup>4t</sup>[1;1;−1] + e<sup>4t</sup>[0;−3;2]<br>
                     = e<sup>4t</sup>[t; t−3; −t+2]<br>
@@ -1310,7 +1310,7 @@
             </div>
 
             <div class="result-highlight">
-                <h4>הוקטור המוכלל והפתרון השלישי</h4>
+                <h4>The Generalized Eigenvector and Third Solution</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.1rem; line-height: 2;">
                     <span class="hl-blue">w = [0, −3, 2]<sup>T</sup></span><br>
                     <span class="hl-blue">x₃(t) = e<sup>4t</sup>[t, t−3, 2−t]<sup>T</sup></span>
@@ -1323,49 +1323,49 @@
     <div class="popup-overlay" id="popup5Overlay">
         <div class="popup" style="border-color: var(--teal);">
             <button class="popup-close" id="popup5Close">&times;</button>
-            <h2 style="color: var(--teal);">פתרון שלב 5 - פתרון פרטי</h2>
+            <h2 style="color: var(--teal);">Step 5 Solution - Particular Solution</h2>
 
             <div class="solution-step">
-                <div class="label">הצבת x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup> במערכת:</div>
+                <div class="label">Substituting x<sub>p</sub> = e<sup>3t</sup>[a₁, a₂, a₃]<sup>T</sup> into the system:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
                     3e<sup>3t</sup>[a₁;a₂;a₃] = A·e<sup>3t</sup>[a₁;a₂;a₃] + e<sup>3t</sup>[1;1;0]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">צמצום e<sup>3t</sup> ופישוט:</div>
+                <div class="label">Canceling e<sup>3t</sup> and simplifying:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     (3I − A)[a₁;a₂;a₃] = [1;1;0]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">המטריצה (3I − A):</div>
+                <div class="label">The matrix (3I − A):</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem;">
                     [−1, 1, 1; −1, −2, −2; 0, −1, −2]
                 </div>
             </div>
 
             <div class="solution-step">
-                <div class="label">פתרון המערכת:</div>
+                <div class="label">Solving the system:</div>
                 <div class="math" style="direction: ltr; text-align: center; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.8;">
-                    ממשוואה 3: a₂ + 2a₃ = 0 → a₂ = −2a₃<br>
-                    ממשוואה 2: −a₁ − 2a₂ − 2a₃ = 1 → −a₁ + 4a₃ − 2a₃ = 1 → −a₁ + 2a₃ = 1<br>
-                    ממשוואה 1: −a₁ + a₂ + a₃ = 1 → −a₁ − 2a₃ + a₃ = 1 → −a₁ − a₃ = 1<br><br>
-                    ממשוואות 2 ו-1: 2a₃ − (−a₃) = 0 → 3a₃ = 0 → a₃ = 0<br>
+                    From Equation 3: a₂ + 2a₃ = 0 → a₂ = −2a₃<br>
+                    From Equation 2: −a₁ − 2a₂ − 2a₃ = 1 → −a₁ + 4a₃ − 2a₃ = 1 → −a₁ + 2a₃ = 1<br>
+                    From Equation 1: −a₁ + a₂ + a₃ = 1 → −a₁ − 2a₃ + a₃ = 1 → −a₁ − a₃ = 1<br><br>
+                    From Equations 2 and 1: 2a₃ − (−a₃) = 0 → 3a₃ = 0 → a₃ = 0<br>
                     a₂ = 0, a₁ = −1
                 </div>
             </div>
 
             <div class="result-highlight">
-                <h4>הפתרון הפרטי</h4>
+                <h4>The Particular Solution</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.15rem;">
                     <span class="hl-teal">x<sub>p</sub>(t) = e<sup>3t</sup>[−1, 0, 0]<sup>T</sup></span>
                 </div>
             </div>
 
             <div class="result-highlight" style="background: rgba(17, 168, 160, 0.15); border-color: var(--teal); margin-top: 15px;">
-                <h4 style="color: var(--teal);">הפתרון הכללי</h4>
+                <h4 style="color: var(--teal);">The General Solution</h4>
                 <div class="math" style="direction: ltr; font-family: 'Times New Roman', serif; font-size: 1.05rem; line-height: 2;">
                     x(t) = −C₁e<sup>6t</sup> + C₂e<sup>4t</sup> + C₃te<sup>4t</sup> − e<sup>3t</sup><br>
                     y(t) = C₁e<sup>6t</sup> + C₂e<sup>4t</sup> + C₃(t−3)e<sup>4t</sup><br>
@@ -1377,7 +1377,7 @@
 
     <script>
         // API Endpoint - Vercel serverless function (will be updated after deployment)
-        const API_ENDPOINT = 'https://mmn-13-q-3.vercel.app/api/ai-hint';
+        const API_ENDPOINT = 'https://mmn-13-q-3-en.vercel.app/api/ai-hint';
 
         // Conversation history per step
         const conversationHistory = {
@@ -1392,23 +1392,23 @@
         const problemData = {
             1: {
                 correctAnswer: "λ₁ = 6 (simple), λ₂ = 4 (double)",
-                fullSolution: "λ₁ = 6, λ₂ = 4\n\nשלבי הפתרון:\n1. הפולינום האופייני: |λI - A| = (λ-4)²(λ-6)\n2. שורשים: λ = 6 (פשוט), λ = 4 (כפול)"
+                fullSolution: "λ₁ = 6, λ₂ = 4\n\nSolution steps:\n1. Characteristic polynomial: |λI - A| = (λ-4)²(λ-6)\n2. Roots: λ = 6 (simple), λ = 4 (double)"
             },
             2: {
                 correctAnswer: "v₁ = [-1, 1, 1]^T (or scalar multiple)",
-                fullSolution: "v₁ = [-1, 1, 1]^T\n\nשלבי הפתרון:\n1. (6I - A) = [2, 1, 1; -1, 1, -2; 0, -1, 1]\n2. דירוג שורות\n3. v₁ = [-1, 1, 1]^T"
+                fullSolution: "v₁ = [-1, 1, 1]^T\n\nSolution steps:\n1. (6I - A) = [2, 1, 1; -1, 1, -2; 0, -1, 1]\n2. Row reduction\n3. v₁ = [-1, 1, 1]^T"
             },
             3: {
                 correctAnswer: "v₂ = [1, 1, -1]^T (or scalar multiple)",
-                fullSolution: "v₂ = [1, 1, -1]^T\n\nשלבי הפתרון:\n1. (4I - A) = [0, 1, 1; -1, -1, -2; 0, -1, -1]\n2. דירוג שורות\n3. v₂ = [1, 1, -1]^T"
+                fullSolution: "v₂ = [1, 1, -1]^T\n\nSolution steps:\n1. (4I - A) = [0, 1, 1; -1, -1, -2; 0, -1, -1]\n2. Row reduction\n3. v₂ = [1, 1, -1]^T"
             },
             4: {
                 correctAnswer: "w = [0, -3, 2]^T (w₂ = -3, w₃ = 2)",
-                fullSolution: "w = [0, -3, 2]^T\n\nשלבי הפתרון:\n1. (A - 4I)w = v₂\n2. פתרון המערכת: w₁ חופשי, w₂ = w₁ - 3, w₃ = 2 - w₁\n3. בחירת w₁ = 0: w = [0, -3, 2]^T\n4. הפתרון השלישי: x₃(t) = e^{4t}[t, t-3, 2-t]^T"
+                fullSolution: "w = [0, -3, 2]^T\n\nSolution steps:\n1. (A - 4I)w = v₂\n2. Solving the system: w₁ free, w₂ = w₁ - 3, w₃ = 2 - w₁\n3. Choosing w₁ = 0: w = [0, -3, 2]^T\n4. Third solution: x₃(t) = e^{4t}[t, t-3, 2-t]^T"
             },
             5: {
                 correctAnswer: "a₁ = -1, a₂ = 0, a₃ = 0",
-                fullSolution: "a₁ = -1, a₂ = 0, a₃ = 0\n\nשלבי הפתרון:\n1. הצבת x_p = e^{3t}[a₁,a₂,a₃]^T במערכת\n2. (3I - A)[a₁,a₂,a₃]^T = [1,1,0]^T\n3. פתרון: a₁ = -1, a₂ = 0, a₃ = 0\n4. x_p = e^{3t}[-1, 0, 0]^T"
+                fullSolution: "a₁ = -1, a₂ = 0, a₃ = 0\n\nSolution steps:\n1. Substituting x_p = e^{3t}[a₁,a₂,a₃]^T into the system\n2. (3I - A)[a₁,a₂,a₃]^T = [1,1,0]^T\n3. Solution: a₁ = -1, a₂ = 0, a₃ = 0\n4. x_p = e^{3t}[-1, 0, 0]^T"
             }
         };
 
@@ -1532,7 +1532,7 @@
             messagesDiv.innerHTML += `
                 <div class="ai-message ai-loading">
                     <div class="spinner"></div>
-                    <span>מעבד את התשובה...</span>
+                    <span>Processing your answer...</span>
                 </div>
             `;
 
@@ -1557,7 +1557,7 @@
                 if (data.error) {
                     messagesDiv.innerHTML += `
                         <div class="ai-message" style="color: var(--red);">
-                            שגיאה: ${data.error}
+                            Error: ${data.error}
                         </div>
                     `;
                     return;
@@ -1578,7 +1578,7 @@
 
                 messagesDiv.innerHTML += `
                     <div class="ai-message" style="color: var(--red);">
-                        לא ניתן להתחבר לשרת. ודאו שהשרת המקומי פועל.
+                        Unable to connect to the server. Make sure the local server is running.
                     </div>
                 `;
                 console.error('API Error:', error);
@@ -1592,7 +1592,7 @@
             conversationHistory[step].forEach((turn, i) => {
                 html += `
                     <div class="ai-message user">
-                        <strong>ניסיון #${i + 1}:</strong> ${turn.user}
+                        <strong>Attempt #${i + 1}:</strong> ${turn.user}
                     </div>
                     <div class="ai-message assistant">
                         ${turn.ai}
@@ -1620,14 +1620,14 @@
             if (l1 === '6' && l2 === '4') {
                 document.getElementById('lambda1').className = 'correct';
                 document.getElementById('lambda2').className = 'correct';
-                showFeedback(document.getElementById('feedback1'), '✓ מצוין! הערכים העצמיים נכונים', true);
+                showFeedback(document.getElementById('feedback1'), '✓ Excellent! The eigenvalues are correct', true);
                 stepCompleted[0] = true;
                 updateUI();
             } else if (l1 === '4' && l2 === '6') {
                 // Swapped - still correct values but wrong placement
-                showFeedback(document.getElementById('feedback1'), '✗ הערכים נכונים אבל שימו לב: λ₁ הוא הפשוט (6) ו-λ₂ הוא הכפול (4)', false);
+                showFeedback(document.getElementById('feedback1'), '✗ The values are correct but note: λ₁ is the simple eigenvalue (6) and λ₂ is the double eigenvalue (4)', false);
             } else {
-                showFeedback(document.getElementById('feedback1'), '✗ בדקו שוב את הפולינום האופייני', false);
+                showFeedback(document.getElementById('feedback1'), '✗ Check the characteristic polynomial again', false);
             }
         });
 
@@ -1670,11 +1670,11 @@
             });
 
             if (correct) {
-                showFeedback(document.getElementById('feedback2'), '✓ מצוין! הוקטור העצמי נכון', true);
+                showFeedback(document.getElementById('feedback2'), '✓ Excellent! The eigenvector is correct', true);
                 stepCompleted[1] = true;
                 updateUI();
             } else {
-                showFeedback(document.getElementById('feedback2'), '✗ בדקו שוב - פתרו (6I-A)v=0', false);
+                showFeedback(document.getElementById('feedback2'), '✗ Check again - solve (6I-A)v=0', false);
             }
         });
 
@@ -1711,11 +1711,11 @@
             });
 
             if (correct) {
-                showFeedback(document.getElementById('feedback3'), '✓ מצוין! הוקטור העצמי נכון', true);
+                showFeedback(document.getElementById('feedback3'), '✓ Excellent! The eigenvector is correct', true);
                 stepCompleted[2] = true;
                 updateUI();
             } else {
-                showFeedback(document.getElementById('feedback3'), '✗ בדקו שוב - פתרו (4I-A)v=0', false);
+                showFeedback(document.getElementById('feedback3'), '✗ Check again - solve (4I-A)v=0', false);
             }
         });
 
@@ -1754,11 +1754,11 @@
             document.getElementById('w3-val').className = w3Correct ? 'correct' : 'incorrect';
 
             if (w2Correct && w3Correct) {
-                showFeedback(document.getElementById('feedback4'), '✓ מצוין! הוקטור המוכלל נכון', true);
+                showFeedback(document.getElementById('feedback4'), '✓ Excellent! The generalized eigenvector is correct', true);
                 stepCompleted[3] = true;
                 updateUI();
             } else {
-                showFeedback(document.getElementById('feedback4'), '✗ בדקו שוב - פתרו (A-4I)w = v₂', false);
+                showFeedback(document.getElementById('feedback4'), '✗ Check again - solve (A-4I)w = v₂', false);
             }
         });
 
@@ -1800,12 +1800,12 @@
             document.getElementById('a3-val').className = a3Correct ? 'correct' : 'incorrect';
 
             if (a1Correct && a2Correct && a3Correct) {
-                showFeedback(document.getElementById('feedback5'), '✓ מעולה! הפתרון הפרטי נכון. הפתרון הכללי מוצג למטה.', true);
+                showFeedback(document.getElementById('feedback5'), '✓ Excellent! The particular solution is correct. The general solution is shown below.', true);
                 stepCompleted[4] = true;
                 document.getElementById('final-answer').style.display = 'block';
                 updateUI();
             } else {
-                showFeedback(document.getElementById('feedback5'), '✗ בדקו שוב - פתרו (3I-A)a = [1,1,0]^T', false);
+                showFeedback(document.getElementById('feedback5'), '✗ Check again - solve (3I-A)a = [1,1,0]^T', false);
             }
         });
 
@@ -1846,7 +1846,7 @@
     </script>
 
 <footer class="site-footer" dir="ltr">
-  &copy; The Open University of Israel | Developed by Shir Sivroni
+  &copy; Developed by Shir Sivroni
 </footer>
 </body>
 </html>
